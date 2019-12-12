@@ -4,7 +4,7 @@
 
 Vartotojas gali įvesti norimos transakcijos id ir gauti jos mokestį už jos siuntimą. Taip pat vartotojui automatiškai *print*'inamas brangiausios transakcijos mokestis.
 
-* Programinio kodo veikias : vartotojui įvedus transakcijos *hash*'ą, vykdoma count_fee funkcija, kuri dekoduoja transakcija ir iš kiekvieno *vin* gauną kitos transakcijos id ir jos *vout*'ą. Jei *n* ir kitos transakcijos *vout*'as sutampa *value* sumuojama. Transakcijos *vout*'ų *value* taip pat sumuojama, ir reuzltatas gaunamas atėmus *vout* sumą  iš *vin*.
+* Programinio kodo veikias : vartotojui įvedus transakcijos *hash*'ą, vykdoma count_fee() funkcija, kuri dekoduoja transakcija ir iš kiekvieno *vin* gauną kitos transakcijos id ir jos *vout*'ą. Jei *n* ir kitos transakcijos *vout*'as sutampa *value* sumuojama. Transakcijos *vout*'ų *value* taip pat sumuojama, ir rezultatas gaunamas atėmus *vout* sumą  iš *vin*.
 * Programos kodas:
 
 ```py
@@ -45,7 +45,7 @@ count_fee(trans)
 
 ```
 
-* Programos rezultatas : 
+* Programos rezultatas :/
 ![](https://user-images.githubusercontent.com/45967745/70716132-688eac00-1cf4-11ea-93f1-368e7b5a7b0e.png)
 
 ___
