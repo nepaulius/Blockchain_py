@@ -45,7 +45,8 @@ count_fee(trans)
 
 ```
 
-* Programos rezultatas :/
+* Programos rezultatas :
+
 ![](https://user-images.githubusercontent.com/45967745/70716132-688eac00-1cf4-11ea-93f1-368e7b5a7b0e.png)
 
 ___
