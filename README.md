@@ -94,3 +94,7 @@ trans=p.getrawtransaction('4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208
 count_fee(trans)
 
 ```
+* Programos rezultatas : 
+
+![](https://user-images.githubusercontent.com/45967745/70718091-3e3eed80-1cf8-11ea-8615-b18d449490c1.png)
+
