@@ -1,5 +1,11 @@
 # Blockchain_py
 
+**Pirmoji užduotis**
+
+Vartotojas gali įvesti norimos transakcijos id ir gauti jos mokestį už jos siuntimą. Taip pat vartotojui automatiškai *print*'inamas brangiausios transakcijos mokestis.
+
+* Programos kodas:
+
 ```py
 from bitcoin.rpc import RawProxy
 from operator import attrgetter
@@ -37,3 +43,12 @@ trans=p.getrawtransaction('4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208
 count_fee(trans)
 
 ```
+
+* Programos rezultatas : 
+![](https://user-images.githubusercontent.com/45967745/70716132-688eac00-1cf4-11ea-93f1-368e7b5a7b0e.png)
+
+___
+
+**Antroji užduotis**
+
+
