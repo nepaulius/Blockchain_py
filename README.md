@@ -58,40 +58,68 @@ Gaunamas bloko headerio info (version, previousblockhash, mekleroot, time, bits,
 * Programos kodas:
 
 ```py
+
 from bitcoin.rpc import RawProxy
-from operator import attrgetter
+
+import hashlib
+import codecs
+import base64
+import struct
 
 p = RawProxy()
 
-def count_fee(temp):
+def indians(temp):
+	a=struct.pack("<I",temp)
+	b=codecs.encode(a,'hex')
+	c=b.decode()
+	return c
 
-	decoded_tx = p.decoderawtransaction(temp)
-	vin_value=0
-	vout_value=0
+def SwapOrder(temp):
 
-	for i in decoded_tx['vin']:
-		raw_tx = p.getrawtransaction(i['txid'])
-		next_decoded = p.decoderawtransaction(raw_tx)
-		vinVout=i['vout']
-		for k in next_decoded['vout']:
-			if(k['n']==vinVout):
-				vin_value+=k['value']
+	S_array=[]
+	Reverse=temp[::-1]
+	Split=list(Reverse)	
+	a=""
+	for i in range(0,len(Split),2):
+		a+=Split[i+1]+Split[i]
 	
-	for output in decoded_tx['vout']:
-		vout_value = vout_value + output['value']
-
-	ans=vin_value-vout_value
-	print("Transaction fee : ", ans, " BTC") 
+	return a
 
 
+blockheight = 277316
 
-txt=input("Enter your transaction hash :")
-t = p.getrawtransaction(txt)
-count_fee(t)
 
-print("Biggest transaction fee : ")
-trans=p.getrawtransaction('4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208ce2ce09ed7d')
-count_fee(trans)
+blockhash = p.getblockhash(blockheight)
+
+
+block = p.getblock(blockhash)
+
+version=indians(block['version'])
+prev_hash=SwapOrder(block['previousblockhash'])
+merkle_root=SwapOrder(block['merkleroot'])
+time_stamp=indians(block['time'])
+d_bits=SwapOrder(block['bits'])
+nonce=indians(block['nonce'])
+
+
+
+first_hex=(version+prev_hash+merkle_root+time_stamp+d_bits+nonce)
+
+header_bin=codecs.decode(first_hex, 'hex')
+
+hash = hashlib.sha256(hashlib.sha256(header_bin).digest()).digest()
+
+hash3=codecs.encode(hash[::-1],'hex_codec')
+
+
+
+print(" ")
+print("Block hash : ")
+print(blockhash)
+print(" ")
+print("Block hash after verification : ")
+print(hash3.decode())
+print(" ")
 
 ```
 * Programos rezultatas : 
